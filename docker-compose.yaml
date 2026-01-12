@@ -101,7 +101,7 @@ services:
   # nomad worker (processing)
   worker:
     restart: unless-stopped
-    image: ghcr.io/ak-feldhoff-luh/nomad-distro-dev:v1.0.0
+    image: ghcr.io/ak-feldhoff-luh/nomad-distro-dev:v1.0.2
     platform: linux/amd64
     environment:
       NOMAD_SERVICE: nomad_oasis_worker
@@ -123,7 +123,8 @@ services:
         condition: service_healthy
     volumes:
       # - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      # - ./.volumes/fs:/app/.volumes/fs
+      - /srv/nomad/.volumes/fs:/app/.volumes/fs
     command: python -m nomad.cli admin run action-internal-worker
     healthcheck:
       # See https://keithtenzer.com/temporal/Deploying_Temporal_Worker_on_Kubernetes/#liveliness-and-readiness-probes
@@ -220,7 +221,7 @@ services:
   # nomad app (api + proxy)
   app:
     restart: unless-stopped
-    image: ghcr.io/ak-feldhoff-luh/nomad-distro-dev:v1.0.0
+    image: ghcr.io/ak-feldhoff-luh/nomad-distro-dev:v1.0.2
     platform: linux/amd64
     container_name: nomad_oasis_app
     environment:
@@ -248,7 +249,8 @@ services:
         condition: service_started
     volumes:
       # - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      # - ./.volumes/fs:/app/.volumes/fs
+      - /srv/nomad/.volumes/fs:/app/.volumes/fs
     command: ./run.sh
     healthcheck:
       test:
@@ -265,7 +267,7 @@ services:
   # nomad remote tools hub (JupyterHUB, e.g. for AI Toolkit)
   north:
     restart: unless-stopped
-    image: ghcr.io/ak-feldhoff-luh/nomad-distro-dev:v1.0.0
+    image: ghcr.io/ak-feldhoff-luh/nomad-distro-dev:v1.0.2
     platform: linux/amd64
     container_name: nomad_oasis_north
     environment:
@@ -283,7 +285,8 @@ services:
       - ./.env
     volumes:
       # - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      # - ./.volumes/fs:/app/.volumes/fs
+      - /srv/nomad/.volumes/fs:/app/.volumes/fs
       - /var/run/docker.sock:/var/run/docker.sock
     user: "1000:1001" # user id from LUH system
     command: python -m nomad.cli admin run hub
@@ -303,7 +306,7 @@ services:
   # to enable the logtransfer service run "docker compose --profile with_logtransfer up"
   logtransfer:
     restart: unless-stopped
-    image: ghcr.io/ak-feldhoff-luh/nomad-distro-dev:v1.0.0
+    image: ghcr.io/ak-feldhoff-luh/nomad-distro-dev:v1.0.2
     platform: linux/amd64
     container_name: nomad_oasis_logtransfer
     environment:
@@ -319,7 +322,8 @@ services:
         condition: service_healthy
     volumes:
       # - ./configs/nomad.yaml:/app/nomad.yaml
-      - ./.volumes/fs:/app/.volumes/fs
+      # - ./.volumes/fs:/app/.volumes/fs
+      - /srv/nomad/.volumes/fs:/app/.volumes/fs
     command: python -m nomad.cli admin run logtransfer
     profiles: ["with_logtransfer"]
 
