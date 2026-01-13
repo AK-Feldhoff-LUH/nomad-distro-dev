@@ -50,7 +50,9 @@ services:
       - MONGO_LOG_DIR=/dev/null
     volumes:
       - mongo:/data/db
-      - ./.volumes/mongo:/backup
+      # - ./.volumes/mongo:/backup
+      - /srv/nomad/.volumes/mongo:/backup
+
     command: mongod --logpath=/dev/null # --quiet
     healthcheck:
       test:
