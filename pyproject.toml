@@ -31,7 +31,7 @@ repository = "https://github.com/ak-feldhoff-luh/nomad-distro-dev"
 
 [project.optional-dependencies]
 plugins = [
-  "nomad-simulations==0.5.0",
+  "nomad-simulations==0.6.0",
   "nomad-schema-plugin-run>=1.0.1",
   "nomad-schema-plugin-simulation-workflow>=1.0.1",
   "nomad-normalizer-plugin-bandstructure>=1.0",
