@@ -50,6 +50,8 @@ plugins = [
   "nomad-measurements @ git+https://github.com/glaidedata/nomad-measurements.git@raw-parser",
   "fairmat-readers-xrd @ git+https://github.com/glaidedata/readers-xrd.git@raw-parser",
   "nomad-em-parser-akfeldhoff @ git+https://github.com/glaidedata/nomad-parser-plugin-em-akfeldhoff.git@main"
+
+  "pynxtools-em>=0.4.2",
 ]
 jupyter = ["jupyter-events"]
 gpu-action = []
