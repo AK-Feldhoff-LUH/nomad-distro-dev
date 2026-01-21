@@ -8,6 +8,12 @@ services:
 oasis:
   is_oasis: true
   uses_central_user_management: true
+  allowed_users:
+      - armin.feldhoff@pci.uni-hannover.de
+      - kristina.kebel@pci.uni-hannover.de
+      - merle.wellmann@pci.uni-hannover.de
+      - sebastian.brueckner@physik.hu-berlin.de
+      - joseph.rudzinski@physik.hu-berlin.de
 
 north:
   jupyterhub_crypt_key: "978bfb2e13a8448a253c629d8dd84ff89587f30e635b753153960930cad9d36d"
