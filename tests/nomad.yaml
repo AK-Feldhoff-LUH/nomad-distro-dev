@@ -11,5 +11,5 @@ services:
 plugins:
   entry_points:
     exclude:
-      - "entries"
-      - "calculations"
+      - "apps/1_all/1_entries"
+      - "apps/2_theory/1_calculations"

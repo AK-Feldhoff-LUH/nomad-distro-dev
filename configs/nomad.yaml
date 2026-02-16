@@ -43,4 +43,4 @@ elastic:
 plugins:
   entry_points:
     exclude:
-      - "calculations"
+      - "apps/2_theory/1_calculations"
