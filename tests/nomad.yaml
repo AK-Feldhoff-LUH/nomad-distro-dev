@@ -11,5 +11,5 @@ services:
 plugins:
   entry_points:
     exclude:
-      - "nomad.config.models.plugins:entry_points/options/apps/1_all/1_entries"
-      - "nomad.config.models.plugins:entry_points/options/apps/2_theory/1_calculations"
+      - "entries"
+      - "calculations"
