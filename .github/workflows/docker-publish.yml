@@ -19,9 +19,14 @@ env:
   # If you want to include custom documentation, create a fork of the repo below and link the forked repo here
   NOMAD_DOCS_REPO: https://github.com/FAIRmat-NFDI/nomad-docs.git
   NOMAD_DOCS_REPO_REF: "main"
-  NOMAD_DOCS_PACKAGE: "nomad-docs<0.1.3"
+  # Skip example upload tests for pynxtools plugins (timeout issues with data processing)
   # If you want to skip the tests for some plugins, add them to the list below
   PLUGIN_TESTS_PLUGINS_TO_SKIP: |
+    pynxtools_em
+    pynxtools_apm
+    pynxtools_mpes
+    pynxtools_ellips
+    pynxtools_igor
     workflowparsers
     nomad_porous_materials
     simulationworkflowschema
@@ -30,7 +35,6 @@ env:
     eelsdbparser
     atomisticparsers
     nomad_aitoolkit
-    pynxtools_igor
     electronicparsers
     nomad_simulations
 
@@ -169,6 +173,7 @@ jobs:
           )
           if [ -z "${NOMAD_LAB_VERSION}" ]; then
             echo "ref=${NOMAD_DOCS_REPO_REF}" >> "$GITHUB_OUTPUT"
+            echo "package=nomad-docs" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -176,6 +181,7 @@ jobs:
           BASE_VERSION="${NOMAD_LAB_VERSION%%+*}"
           BASE_VERSION="${BASE_VERSION%%.dev*}"
           echo "ref=v${BASE_VERSION}" >> "$GITHUB_OUTPUT"
+          echo "package=nomad-docs==${BASE_VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -186,7 +192,7 @@ jobs:
             PYTHON_VERSION=${{ env.PYTHON_VERSION }}
             NOMAD_DOCS_REPO=${{ env.NOMAD_DOCS_REPO }}
             NOMAD_DOCS_REPO_REF=${{ steps.docs_ref.outputs.ref }}
-            NOMAD_DOCS_PACKAGE=${{ env.NOMAD_DOCS_PACKAGE }}
+            NOMAD_DOCS_PACKAGE=${{ steps.docs_ref.outputs.package }}
             JUPYTER_VERSION=${{ env.JUPYTER_VERSION }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
