@@ -112,7 +112,7 @@ WORKDIR /app
 
 ARG NOMAD_DOCS_REPO="https://github.com/FAIRmat-NFDI/nomad-docs.git"
 ARG NOMAD_DOCS_REPO_REF="main"
-ARG NOMAD_DOCS_PACKAGE="nomad-docs<0.1.3"
+ARG NOMAD_DOCS_PACKAGE="nomad-docs"
 
 RUN set -ex && \
     echo "Cloning from: ${NOMAD_DOCS_REPO}; branch: ${NOMAD_DOCS_REPO_REF}" && \
