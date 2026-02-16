@@ -39,3 +39,9 @@ mongo:
 elastic:
   entries_index: nomad_oasis_entries_v1
   materials_index: nomad_oasis_materials_v1
+
+plugins:
+  entry_points:
+    exclude:
+      - "nomad.config.models.plugins:entry_points/options/apps/1_all/1_entries"
+      - "nomad.config.models.plugins:entry_points/options/apps/2_theory/1_calculations"
