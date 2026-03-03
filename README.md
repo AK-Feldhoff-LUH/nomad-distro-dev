@@ -314,14 +314,13 @@ This automated process helps ensure that your dependencies stay up to date, impr
 
 ## Customizing Documentation
 
-By default, documentation is built using the [nomad-docs](https://github.com/AK-Feldhoff-LUH/nomad-docs) repository. However, if you'd like to customize the documentation for your Oasis instance, you can easily do so.
+By default, documentation is built using the [nomad-docs-ak-feldhoff](https://github.com/AK-Feldhoff-LUH/nomad-docs-ak-feldhoff) repository. However, if you'd like to customize the documentation for your Oasis instance, you can easily do so.
 
-1. First, [fork the nomad-docs repository](https://github.com/AK-Feldhoff-LUH/nomad-docs/fork).
+1. First, [fork the nomad-docs-ak-feldhoff repository](https://github.com/AK-Feldhoff-LUH/nomad-docs-ak-feldhoff/fork).
 2. Make your desired changes in your fork.
 3. Update the `NOMAD_DOCS_REPO` variable in the [.github/workflows/docker-publish.yml](./.github/workflows/docker-publish.yml#L19) file to point to the URL of your forked repository.
 
 This setup ensures that your custom documentation is used when building your Oasis.
-
 
 ## Backing up the Oasis
 

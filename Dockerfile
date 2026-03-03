@@ -110,7 +110,7 @@ FROM builder AS docs
 
 WORKDIR /app
 
-ARG NOMAD_DOCS_REPO="https://github.com/FAIRmat-NFDI/nomad-docs.git"
+ARG NOMAD_DOCS_REPO="https://github.com/AK-Feldhoff-LUH/nomad-docs-ak-feldhoff.git"
 ARG NOMAD_DOCS_REPO_REF=""
 
 # Clones the documentation repository, checks out the version matching nomad-lab
@@ -135,8 +135,21 @@ RUN --mount=type=cache,target=/root/.cache/uv \
             echo "Tag ${NOMAD_VERSION} found. Checking out."; \
             git checkout "${NOMAD_VERSION}"; \
         else \
-            echo "Tag ${NOMAD_VERSION} not found. Checking out main branch."; \
-            git checkout main; \
+            DEFAULT_BRANCH=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | sed 's|^origin/||'); \
+            if [ -z "${DEFAULT_BRANCH}" ]; then \
+                for CANDIDATE in main master; do \
+                    if git show-ref --verify --quiet "refs/remotes/origin/${CANDIDATE}"; then \
+                        DEFAULT_BRANCH="${CANDIDATE}"; \
+                        break; \
+                    fi; \
+                done; \
+            fi; \
+            if [ -z "${DEFAULT_BRANCH}" ]; then \
+                echo "Could not determine a default branch for docs repo."; \
+                exit 1; \
+            fi; \
+            echo "Tag ${NOMAD_VERSION} not found. Checking out default branch: ${DEFAULT_BRANCH}."; \
+            git checkout "${DEFAULT_BRANCH}"; \
         fi; \
     fi && \
     # Install and build documentation \
