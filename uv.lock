@@ -3119,7 +3119,7 @@ plugins = [
 requires-dist = [
     { name = "jupyter-events", marker = "extra == 'jupyter'" },
     { name = "nomad-analysis", marker = "extra == 'plugins'", specifier = "==0.2.1" },
-    { name = "nomad-em-parser-akfeldhoff", marker = "extra == 'plugins'", git = "https://github.com/AK-Feldhoff-LUH/nomad-parser-plugin-em-akfeldhoff.git?rev=v1.1.0" },
+    { name = "nomad-em-parser-akfeldhoff", marker = "extra == 'plugins'", git = "https://github.com/AK-Feldhoff-LUH/nomad-parser-plugin-em-akfeldhoff.git?rev=v1.1.1" },
     { name = "nomad-lab", extras = ["dev", "infrastructure", "parsing"], marker = "extra == 'dev'", specifier = "==1.4.1" },
     { name = "nomad-lab", extras = ["infrastructure", "parsing"], specifier = "==1.4.1" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", specifier = "==1.0.5" },
@@ -3141,7 +3141,7 @@ provides-extras = ["plugins", "jupyter", "gpu-action", "cpu-action", "dev"]
 [[package]]
 name = "nomad-em-parser-akfeldhoff"
 version = "0.1.0"
-source = { git = "https://github.com/AK-Feldhoff-LUH/nomad-parser-plugin-em-akfeldhoff.git?rev=v1.1.0#b69c97b29bb48f99e2340be8f41c876ba4186983" }
+source = { git = "https://github.com/AK-Feldhoff-LUH/nomad-parser-plugin-em-akfeldhoff.git?rev=v1.1.1#eca97735b78718b8ffba3f92a6249f0af5e6fe4f" }
 dependencies = [
     { name = "nomad-lab" },
     { name = "pillow" },
