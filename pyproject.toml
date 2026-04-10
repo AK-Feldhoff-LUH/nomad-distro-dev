@@ -38,7 +38,7 @@ plugins = [
   "nomad-em-parser-akfeldhoff @ git+https://github.com/AK-Feldhoff-LUH/nomad-parser-plugin-em-akfeldhoff.git@v1.1.1",
 
   # Pynxtools readers
-  "pynxtools==0.12.0",
+  "pynxtools==0.13.2",
   "pynxtools-apm==0.4.3",
   "pynxtools-ellips==0.1.1",
   "pynxtools-em==0.4.2",
