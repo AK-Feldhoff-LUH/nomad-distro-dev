@@ -23,6 +23,7 @@ license = { file = "LICENSE" }
 dependencies = [
   "nomad-lab[parsing, infrastructure]==1.4.1",
   "setuptools",
+   "nomad-north-emtools"
 ]
 
 
@@ -67,6 +68,13 @@ prerelease = "explicit"
 
 [tool.uv.extra-build-dependencies]
 flatdict = ["setuptools<82.0.0"]
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+nomad-lab = { workspace = true }
+nomad-north-emtools = { workspace = true }
 
 [tool.setuptools.packages.find]
 exclude = ["gui*", "docs*", "config*"]
