@@ -51,7 +51,7 @@ plugins = [
   "pynxtools-xrd==0.0.7",
 
   # Domain-specific NORTH Tools
-  "nomad-north-emtools == 0.1.0",
+  "nomad-north-emtools",
 ]
 jupyter = ["jupyter-events"]
 gpu-action = []
